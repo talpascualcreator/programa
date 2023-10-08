@@ -1,0 +1,79 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.carta {
+    width: 100%;
+    height: 100%; /* Cambiado a 100% para mantener una forma cuadrada */
+    background-color: rgba(66, 66, 66, 0.24);
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    backface-visibility: hidden;
+}
+
+/* Estilos cuando la carta está volteada */
+.carta.volteada {
+    transform: rotateY(180deg);
+}
+
+/* Estilos cuando se encuentra una coincidencia */
+.carta.coincidencia {
+    background-color: #4CAF50; /* Color verde para las cartas coincidentes */
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto de sombra al pasar el mouse */
+.carta:not(.volteada):hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para el mensaje de victoria */
+#mensaje-victoria {
+    display: none;
+    font-size: 24px;
+    color: #4CAF50;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Animación de aparición del mensaje de victoria */
+#mensaje-victoria.aparecer {
+    animation: aparecer 0.5s ease-in-out forwards;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
